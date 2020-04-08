@@ -1,0 +1,23 @@
+.nav
+   display: flex
+   &__logo
+      padding: 23px 14px
+      margin-right: 5rem
+      @include center
+   &__menu
+      display: flex
+      align-items: center
+      &-item
+         height: 100%
+      &-link
+         padding: 0 29px
+         height: 100%
+         @include center
+   &__info
+      margin-left: 11rem
+      display: flex
+      &-item
+         white-space: nowrap
+         @include center
+         &:not(:last-child)
+            margin-right: 5rem
