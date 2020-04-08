@@ -1,0 +1,179 @@
+.head
+   padding-bottom: 50px
+   margin-bottom: 50px
+   &__tabs
+      display: flex
+      position: relative
+   &__line-fluid
+      @include line-fluid($light-gray)
+
+   &-btn 
+      max-width: 263px
+      width: 100%
+      height: 60px
+      border-radius: 3px
+      background-image: linear-gradient(to top, #0187c1, #3ac0ef)
+      padding: 20px 20px 20px 17px
+      margin-right: 10px
+      display: flex
+      align-items: center
+      &__text
+         margin-left: 20px
+         padding-right: 30px
+         font-size: 1.8rem
+         font-weight: 600
+         letter-spacing: 0.9px
+         text-align: left
+         color: #ffffff
+         position: relative
+      &__icon-arrow 
+         position: absolute
+         @include v-center
+         font-size: 11px
+         width: 11px
+         height: 6px
+         opacity: 0.3
+         right: 0
+
+   &-nav
+      display: flex
+      justify-content: space-between
+      align-items: center
+      width: 100%
+      overflow: hidden
+      &__item
+         text-transform: uppercase
+         font-size: 1.4rem
+         font-weight: bold
+         letter-spacing: 0.7px
+         color: $dark-gray
+         position: relative
+         padding: 0 15px
+         height: 100%
+         display: flex
+         align-items: center
+         &:last-child
+            padding-right: 0
+         &:hover
+            color: $azure
+            &:before
+               content: ""
+               width: 18px
+               height: 18px
+               background: #fff
+               position: absolute
+               top: -9px
+               @include h-center
+               transform: translateX(-50%) rotate(45deg)
+
+   &__main-wrapper
+      margin-top: 30px
+   &-menu
+      max-width: 263px
+      width: 110%
+      border-radius: 3px
+      background-color: $light-gray
+      &__item
+         width: 100%
+         padding: 0 18px 0 25px
+         &:not(:last-child)
+            border-bottom: 1px solid #fff
+      &__link
+         padding: 15px 36px
+         display: inline-block
+         position: relative
+         width: 100%
+         &:before
+            @include circle($dark-gray)
+            left: 0
+         &:after
+            content: "\f054"
+            position: absolute
+            right: 0
+            @include v-center
+            font-family: "Font Awesome 5 Free"
+            font-weight: 900
+            font-size: 11px
+
+   &-slider
+      max-width: 850px
+      width: 100%
+      background: $bg-post
+      padding: 61px 42px 36px
+      border-radius: 3px
+      margin-bottom: 29px
+      &__item
+         position: relative
+      &__title
+         max-width: 321px
+         width: 100%
+         font-size: 4rem
+         font-weight: 800
+         line-height: 1.25
+         letter-spacing: 2px
+         text-align: left
+         text-transform: uppercase
+         color: #ffffff
+         margin-bottom: 16px
+      &__desc
+         max-width: 300px
+         width: 100%
+         font-size: 2.2rem
+         font-weight: 600
+         line-height: 1.36
+         letter-spacing: 1.1px
+         text-align: left
+         color: #4bd1fe
+         margin-bottom: 2px
+      &__price
+         max-width: 110px
+         width: 100%
+         font-size: 3rem
+         line-height: 1.5
+         text-align: left
+         color: #ffffff
+         margin-bottom: 22px
+      &__btn
+         max-width: 175px
+         width: 100%
+         height: 54px
+         border-radius: 3px
+         background: $dark-gray
+         margin-bottom: 35px
+         font-size: 1.6rem
+         font-weight: bold
+         line-height: 1.56
+         letter-spacing: 3.2px
+         text-align: center
+         color: #ffffff
+         &:hover
+            background: $dark-gray
+      &__right
+         position: absolute
+         overflow: hidden
+         right: 0
+         @include v-center
+         top: 43.7%
+      &__img
+         max-width: 333px
+         width: 100%
+         height: auto
+         margin-bottom: -25px
+
+   &-preview__img
+      &-bait
+         right: -25px
+         bottom: -22px
+      &-catalog
+         right: -25px
+         bottom: -23px
+      &-expert
+         right: 0px
+         bottom: -7px
+
+    
+            
+
+
+
+         
