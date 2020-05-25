@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<!-- ? -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<meta property="og:title" content="title"> <!-- ? -->
+	<meta property="og:site_name" content="site_name"> <!-- ? -->
+	<meta property="og:url" content="https://url/"> <!-- ? -->
+	<meta property="og:image" content="img/img.jpg"> <!-- ? -->
+
+	<title>Site from Bogdanov Bogdan</title> <!-- ? -->
+
+	<!-- favicon -->
+
+	<link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+	<header class="header">
+	</header>
+
+	<section class="section" id="section-one">
+	</section>
+
+	<footer class="footer" id="footer">
+		<form method="POST" class="form-callback">
+			<div class="form-callback__title">Заявка на<br>обратный звонок</div>
+			<div class="form-callback__hint">Оставьте заявку на обратный звонок и мы перезвоним Вам в течении 15 минут
+			</div>
+			<div class="form-callback__input-wrapper">
+				<div class="input-wrapper">
+					<input type="text" name="name" required>
+					<label for="name">Ввeдите Ваше имя</label>
+					<span class="clean"></span>
+				</div>
+				<div class="input-wrapper">
+					<input type="tel" name="phone" required>
+					<label for="phone">Ввeдите Ваш телефон</label>
+					<span class="clean"></span>
+				</div>
+			</div>
+			<div class="form-callback__checkbox">
+				<label>
+					<input type="checkbox" name="privacy-policy" checked>
+					<span></span>
+					я согласен с обработкой персональных данных
+				</label>
+			</div>
+			<button type="submit" class="form-callback__btn btn-red">Отправить</button>
+		</form>
+	</footer>
+
+	<!-- MODALS -->
+	<div class="popup popup-callback">
+		<div class="popup__modal popup-callback__modal">
+			<button class="popup__close"></button>
+			<form method="POST" class="form-callback">
+				<div class="form-callback__title">Заявка на<br>обратный звонок</div>
+				<div class="form-callback__hint">Оставьте заявку на обратный звонок и мы перезвоним Вам в течении 15 минут
+				</div>
+				<div class="form-callback__input-wrapper">
+					<div class="input-wrapper">
+						<input type="text" id="name" name="name" class="popup-callback__input" required>
+						<label for="name">Ввeдите Ваше имя</label>
+						<span class="clean"></span>
+					</div>
+					<div class="input-wrapper">
+						<input type="tel" id="phone" name="phone" class="popup-callback__input" required>
+						<label for="phone">Ввeдите Ваш телефон</label>
+						<span class="clean"></span>
+					</div>
+				</div>
+				<div class="popup-callback__checkbox form-callback__checkbox">
+					<label>
+						<input type="checkbox" name="privacy-policy" id="privacy-policy" checked>
+						<span></span>
+						я согласен с обработкой персональных данных
+					</label>
+				</div>
+				<button type="submit" class="popup__btn form-callback__btn btn-red">Отправить</button>
+			</form>
+		</div>
+	</div>
+	<!-- ./popup-callback -->
+
+	<div class="popup popup-notification">
+		<div class="popup__modal popup-notification__modal">
+			<button class="popup__close"></button>
+			<div class="popup__title">Ваша заявка успешно отправлена</div>
+			<div class="popup__hint">Мы перезвоним Вам в течении 15 минут.<br>Спасибо, что выбираете качественный продукт
+			</div>
+			<button class="popup__btn btn-red">Закрыть</button>
+		</div>
+	</div>
+	<!-- ./popup-notification -->
+
+	
+	<script src="js/script.js"></script>
+</body>
+
+</html>
