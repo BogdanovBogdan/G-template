@@ -10,7 +10,7 @@ const cleanCss = require("gulp-clean-css");
 const del = require('del');
 
 const dist = "./docs/";
-// const dist = "D://Program Files//Open Server//OSPanel//domains//Agency.DK";
+// const dist = "D://Program Files//Open Server//OSPanel//domains//";
 
 function html(done) {
 	return gulp.src("./src/index.html")
@@ -60,7 +60,7 @@ function sassToCss(done) {
 
 gulp.task("watch", () => {
 	browserSync.init({
-		server: "./dist",
+		server: dist,
 		port: 4000,
 		notify: true
 	});
@@ -77,5 +77,5 @@ gulp.task("default", gulp.parallel("watch", "build"));
 
 
 gulp.task('clean', () => {
-	return del("./**/.gitikeep");
+	return del("./**/.gitkeep");
 });

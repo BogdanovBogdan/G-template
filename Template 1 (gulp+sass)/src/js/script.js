@@ -80,27 +80,26 @@ window.addEventListener("DOMContentLoaded", function () {
 	});
 
 
-	// smooth scrolling to anchors
-	const smoothScrolling = nav => {
-		const anchors = document.querySelectorAll('a[href*="#"]'),
-			nav = document.querySelector(nav);
+	// // smooth scrolling to anchors
+	// const smoothScrolling = nav => {
+	// 	const anchors = document.querySelectorAll('a[href*="#"]'),
+	// 		nav = document.querySelector(nav);
 	
-		for (let anchor of anchors) {
-			anchor.addEventListener('click', function (e) {
-				e.preventDefault()
+	// 	for (let anchor of anchors) {
+	// 		anchor.addEventListener('click', function (e) {
+	// 			e.preventDefault()
 	
-				const blockID = anchor.getAttribute('href').replace('#', '');
+	// 			const blockID = anchor.getAttribute('href').replace('#', '');
 	
-				setTimeout(() => {
-					document.getElementById(blockID).scrollIntoView({
-						behavior: 'smooth',
-						block: 'start',
-					})
-				}, 500);
-			});
-		};
-	};
-
+	// 			setTimeout(() => {
+	// 				document.getElementById(blockID).scrollIntoView({
+	// 					behavior: 'smooth',
+	// 					block: 'start',
+	// 				})
+	// 			}, 500);
+	// 		});
+	// 	};
+	// };
 
 
 	// post data form

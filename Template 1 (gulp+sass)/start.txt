@@ -7,3 +7,4 @@ git remote add origin *URL* <--- WRITE URL --->
 git push -u origin master
 
 npm i
+gulp
