@@ -12,15 +12,17 @@ const del = require('del');
 const dist = "./docs/";
 // const dist = "D://Program Files//Open Server//OSPanel//domains//";
 
+const htmlPath = "./src/index.html";
 function html(done) {
-	return gulp.src("./src/index.html")
+	return gulp.src(htmlPath)
 		.pipe(gulp.dest(dist))
 		.pipe(browserSync.stream());
 	done();
 };
 
+const cssPath = "./src/css/*.css";
 function css(done) {
-	return gulp.src("./src/css/*.css")
+	return gulp.src(cssPath)
 		.pipe(concat('style.min.css'))
 		.pipe(cleanCss())
 		.pipe(gulp.dest(dist + "/css"))
@@ -28,23 +30,26 @@ function css(done) {
 	done();
 };
 
+const jsPath = "./src/js/**/script.js";
 function js(done) {
-	return gulp.src("./src/js/**/script.js")
+	return gulp.src(jsPath)
 		.pipe(terser())
 		.pipe(gulp.dest(dist + "/js"))
 		.pipe(browserSync.stream());
 	done();
 };
 
+const copySrcPaths = ["./src/**/*.*", "!./src/sass/**/*.*", "!./src/css/*.css", "!./src/js/*.js"];
 function copySrc(done) {
-	return gulp.src(["./src/**/*.*", "!./src/sass/*.sass", "!./src/css/*.css", "!./src/js/*.js"])
+	return gulp.src(copySrcPaths)
 		.pipe(gulp.dest(dist))
 		.on("end", browserSync.reload);
 	done();
 };
 
+const sassToCssPath = "./src/sass/**/*.sass";
 function sassToCss(done) {
-	gulp.src("./src/sass/*.sass")
+	gulp.src(sassToCssPath)
 		.pipe(sass({
 			errorLogToConsole: true
 		}))
@@ -65,11 +70,11 @@ gulp.task("watch", () => {
 		notify: true
 	});
 
-	gulp.watch("./src/index.html", html);
-	gulp.watch("./src/sass/*.sass", sassToCss);
-	gulp.watch("./src/css/*.*", css);
-	gulp.watch("./src/js/**/*.js", js);
-	gulp.watch(["./src/**/*.*", "!./src/sass/*.sass", "!./src/*.html", "!./src/css/*.css", "!./src/js/*.js"], copySrc);
+	gulp.watch(htmlPath, html);
+	gulp.watch(sassToCssPath, sassToCss);
+	gulp.watch(cssPath, css);
+	gulp.watch(jsPath, js);
+	gulp.watch(copySrcPaths, copySrc);
 });
 
 gulp.task("build", gulp.parallel(html, sassToCss, css, js, copySrc));
