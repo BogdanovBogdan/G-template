@@ -125,11 +125,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			})
 		};
 
-		const postData = async (url, data, btnLoad) => {
-			const heightBtn = window.getComputedStyle(btnLoad).height;
-			btnLoad.style.minHeight = heightBtn;
-			btnLoad.classList.add("loader");
-
+		const postData = async (url, data) => {
 			let res = await fetch(url, {
 				method: "post",
 				body: data
@@ -144,13 +140,14 @@ window.addEventListener("DOMContentLoaded", function () {
 				// cancel sending the form if there is no consent to the processing of personal data
 				const checkbox = item.querySelector("[name='privacy-policy']");
 				if (checkbox.checked) {
+					const formData = new FormData(item);
 
 					let notifModal = document.querySelector(".popup-notification"),
 						notifTitle = notifModal.querySelector(".popup__title"),
 						notifHint = notifModal.querySelector(".popup__hint"),
 						btnLoad = item.querySelector('.form-callback__btn');
 
-					const formData = new FormData(item);
+					btnLoad.classList.add("loader");
 
 					postData('../contact.php', formData, btnLoad)
 						.then(res => {
@@ -167,7 +164,6 @@ window.addEventListener("DOMContentLoaded", function () {
 							notifHint.innerHTML = message.failureHint;
 						})
 						.finally(() => {
-							btnLoad.style.minHeight = "";
 							btnLoad.classList.remove("loader");
 							setTimeout(() => {
 								notifModal.style.display = "none";
