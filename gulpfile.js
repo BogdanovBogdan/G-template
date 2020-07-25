@@ -130,7 +130,7 @@ const serve = (done) => {
 	done();
 }
 
-gulp.task('clean', () => {
+gulp.task("clean", () => {
 	return del("./**/.gitkeep");
 });
 
