@@ -56,7 +56,7 @@ const buildProd = (done) => {
 		return del(prodDist)
 	}
 
-	(async function run() {
+	async function run() {
 		browserSync.init({
 			server: prodDist,
 			port: 666
@@ -67,7 +67,8 @@ const buildProd = (done) => {
 		css();
 		js();
 		copySrc();
-	})();
+	};
+	run();
 
 	done();
 }
@@ -78,23 +79,20 @@ const serve = (done) => {
 	function html() {
 		return gulp.src(htmlPath)
 			.pipe(browserSync.stream());
-		done();
 	};
 
 	function css() {
 		return gulp.src(cssPath)
 			.pipe(browserSync.stream());
-		done();
 	};
 
 	function js() {
 		return gulp.src(jsPath)
 			.pipe(browserSync.stream());
-		done();
 	};
 
 	function sassToCss() {
-		gulp.src(sassToCssPath)
+		return gulp.src(sassToCssPath)
 			.pipe(sass({
 				errorLogToConsole: true
 			}))
@@ -105,10 +103,9 @@ const serve = (done) => {
 			}))
 			.pipe(gulp.dest("src/css"))
 			.pipe(browserSync.stream());
-		done();
 	};
 
-	function run() {
+	function watch() {
 		browserSync.init({
 			server: devDist,
 			port: 4000,
@@ -125,7 +122,7 @@ const serve = (done) => {
 		gulp.watch(jsPath, js);
 		gulp.watch(sassToCssPath, sassToCss);
 	}
-	run();
+	watch();
 
 	done();
 }
