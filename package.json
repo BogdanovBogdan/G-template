@@ -9,14 +9,14 @@
   "author": "author",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "del": "^5.1.0",
+    "browser-sync": "^2.29.3",
+    "del": "^7.0.0",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
-    "gulp-sass": "^4.0.2",
-    "gulp-terser": "^1.2.0",
-	 "gulp-html-replace": "^1.6.2"
+    "gulp-html-replace": "^1.6.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-terser": "^2.1.0"
   }
 }
