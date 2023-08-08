@@ -1,9 +1,3 @@
 @import './project/';
-
-.test {
-  background-color: lightgreen;
-
-  @include media-breakpoint-max(phone) {
-    background: lightcoral;
-  }
-}
+@import './components/';
+@import './pages/';
