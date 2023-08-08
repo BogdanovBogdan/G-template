@@ -16,7 +16,7 @@ const devDist = './src/';
 const htmlPath = './src/index.html';
 const cssPath = './src/css/*.css';
 const jsPath = './src/js/**/script.js';
-const sassToCssPath = './src/sass/**/*.sass';
+const sassToCssPath = './src/sass/**/*.scss';
 const copySrcPaths = [
   './src/**/*.*',
   `!${htmlPath}`,
