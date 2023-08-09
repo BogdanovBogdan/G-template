@@ -9,6 +9,7 @@ const concat = require('gulp-concat');
 const cleanCss = require('gulp-clean-css');
 const del = require('del');
 const htmlreplace = require('gulp-html-replace');
+const rename = require('gulp-rename');
 
 const prodDist = './build/';
 const devDist = './src/';
@@ -25,24 +26,36 @@ const copySrcPaths = [
   `!${sassToCssPath}`,
 ];
 
-const buildProd = (done) => {
+const build = (done) => {
+  function sassToCss() {
+    return gulp
+      .src(sassToCssPath)
+      .pipe(
+        sass({
+          errorLogToConsole: true,
+        })
+      )
+      .on('error', console.error.bind(console))
+      .pipe(
+        autoprefixer({
+          cascade: false,
+          overrideBrowserslist: ['last 3 versions'],
+        })
+      )
+      .pipe(cleanCss())
+      .pipe(rename({ suffix: '.min'}))
+      .pipe(gulp.dest(prodDist + '/css'))
+  }
+  
   function html() {
     return gulp
       .src(htmlPath)
       .pipe(
         htmlreplace({
-          stylesheet: './css/style.min.css',
+          stylesheet: './css/styles.min.css',
         })
       )
       .pipe(gulp.dest(prodDist));
-  }
-
-  function css() {
-    return gulp
-      .src(cssPath)
-      .pipe(concat('style.min.css'))
-      .pipe(cleanCss())
-      .pipe(gulp.dest(prodDist + '/css'));
   }
 
   function js() {
@@ -56,19 +69,14 @@ const buildProd = (done) => {
     return gulp.src(copySrcPaths).pipe(gulp.dest(prodDist));
   }
 
-  function cleanDist() {
+  function cleanFolder() {
     return del(prodDist);
   }
 
   async function run() {
-    browserSync.init({
-      server: prodDist,
-      port: 4000,
-    });
-
-    await cleanDist();
+    await cleanFolder();
+    sassToCss();
     html();
-    css();
     js();
     copySrc();
   }
@@ -135,5 +143,5 @@ gulp.task('clean', () => {
   return del('./**/.gitkeep');
 });
 
-gulp.task('buildProd', buildProd);
+gulp.task('build', build);
 gulp.task('default', serve);
