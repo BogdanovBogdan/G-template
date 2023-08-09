@@ -11,8 +11,8 @@ const del = require('del');
 const htmlreplace = require('gulp-html-replace');
 const rename = require('gulp-rename');
 
-const prodDist = './build/';
-const devDist = './src/';
+const buildDir = './build/';
+const devDir = './src/';
 
 const htmlPath = './src/index.html';
 const cssPath = './src/css/*.css';
@@ -44,7 +44,7 @@ const build = (done) => {
       )
       .pipe(cleanCss())
       .pipe(rename({ suffix: '.min'}))
-      .pipe(gulp.dest(prodDist + '/css'))
+      .pipe(gulp.dest(buildDir + '/css'))
   }
   
   function html() {
@@ -55,22 +55,22 @@ const build = (done) => {
           stylesheet: './css/styles.min.css',
         })
       )
-      .pipe(gulp.dest(prodDist));
+      .pipe(gulp.dest(buildDir));
   }
 
   function js() {
     return gulp
       .src(jsPath)
       .pipe(terser()) // compressor
-      .pipe(gulp.dest(prodDist + '/js'));
+      .pipe(gulp.dest(buildDir + '/js'));
   }
 
   function copySrc() {
-    return gulp.src(copySrcPaths).pipe(gulp.dest(prodDist));
+    return gulp.src(copySrcPaths).pipe(gulp.dest(buildDir));
   }
 
   function cleanFolder() {
-    return del(prodDist);
+    return del(buildDir);
   }
 
   async function run() {
@@ -119,9 +119,9 @@ const serve = (done) => {
 
   function watch() {
     browserSync.init({
-      server: devDist,
+      server: devDir,
       port: 4000,
-      notify: true,
+      open: false,
     });
 
     html();
